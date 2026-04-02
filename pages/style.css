@@ -46,6 +46,53 @@ body {
     margin-left: 8px;
 }
 
+.infoText a {
+    color: purple;
+    text-decoration: underline;
+}
+
+.infoText a:hover {
+    cursor: pointer;
+    color: darkslateblue;
+}
+
+#darkFilter {
+    background-color: rgba(0, 0, 0, 0.65);
+    display: none;
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-top: -116px;
+    z-index: 5;
+}
+
+#darkFilter.visible {
+    display: block;
+}
+
+#infoBox {
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    display: none;
+
+    width: 70%;
+    max-width: 800px;
+    height: 50%;
+    padding: 10px;
+
+    position: fixed;
+    justify-self: anchor-center;
+    align-self: anchor-center;
+    margin-top: -275px;
+    z-index: 7;
+}
+
+#infoBox.visible {
+    display: block;
+}
+
 .pageBody #hP_Interface {
     display: flex;
     flex-direction: column;

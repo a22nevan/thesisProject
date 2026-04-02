@@ -6,6 +6,7 @@
     <title>Get Post</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script src="script.js"></script>
 <body>
     <div class="pageHeader">
         <div id="h_Anchors">
@@ -19,7 +20,13 @@
         <div class="infoText">
             <!--SHOULD OPEN UP AN INFORMATION WINDOW ON TOP OF THE CURRENT PAGE, CSS + JS MAGIC TO MAKE IT WORK-->
             <header>This is the Get Post page!</header>
-            <p>For information about page functionality, click <a>here.</a></p>
+            <p>For information about page functionality, click <a onclick="showInfo()">here.</a></p>
+        </div>
+
+        <div id="darkFilter" onclick="exitInfo()"></div>
+
+        <div id="infoBox">
+            Hello
         </div>
 
         <div id="postList">

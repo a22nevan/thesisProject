@@ -6,6 +6,7 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script src="script.js"></script>
 <body>
     <div class="pageHeader">
         <div id="h_Anchors">
@@ -19,7 +20,13 @@
         <div class="infoText">
             <!--SHOULD OPEN UP AN INFORMATION WINDOW ON TOP OF THE CURRENT PAGE, CSS + JS MAGIC TO MAKE IT WORK-->
             <header>Hello, Welcome to the Thesis Project Test Site!</header>
-            <p>For information, press <a>here.</a></p>
+            <p>For information, press <a onclick="showInfo()">here.</a></p>
+        </div>
+
+        <div id="darkFilter" onclick="exitInfo()"></div>
+
+        <div id="infoBox">
+            Hello
         </div>
 
         <div id="hP_Interface">
