@@ -1,0 +1,219 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    background-color: #e5ebff;
+}
+
+.pageHeader {
+    background-color: rgb(41, 41, 41);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+}
+
+#h_Anchors {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#h_Anchors a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+#h_Anchors a:hover {
+    text-decoration: underline;
+}
+
+#inactive {
+    color: gainsboro !important;
+}
+
+#inactive:hover {
+    text-decoration: none !important;
+    cursor: default;
+}
+
+.infoText {
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.pageBody #hP_Interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hP_Interface h1 {
+    margin-bottom: 10px;
+}
+
+#line {
+    height: 2px;
+    width: 50%;
+    background-color: #474747;
+}
+
+#SP_buttons {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#SP_buttons a {
+    background-color: #d3d1d1;
+    color: black;
+    text-decoration: none;
+
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #979494;
+}
+
+#SP_buttons a:hover {
+    background-color: #ababab;
+    border-color: #6d6b6b;
+}
+
+.pageBody #crP_Interface {
+    margin-left: 8px;
+}
+
+#crP_Interface fieldset {
+    width: fit-content;
+    padding-left: 5px;
+}
+
+#crP_Interface label {
+    width: fit-content;
+    margin-top: 7px;
+    margin-bottom: 2px;
+}
+
+#crP_Interface form {
+    display: flex;
+    flex-direction: column;
+}
+
+#crP_Interface form label {
+    font-weight: bold;
+}
+
+#postTitle {
+    width: 50%;
+    max-width: 650px;
+    height: 24px;
+    font-size: 16px;
+}
+
+#postButton {
+    margin-left: 10px;
+    height: 26px;
+    font-size: 14px;
+}
+
+#postBody {
+    width: 75%;
+    max-width: 950px;
+    font-size: 16px;
+    font-family: auto;
+    padding-left: 3px;
+    padding-right: 3px;
+    resize: none;
+}
+
+#postList fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 500px;
+    margin-left: 8px;
+    padding-left: 15px;
+    padding-right: 18px;
+    padding-bottom: 15px;
+}
+
+#postList label {
+    margin-left: 3px;
+    font-size: 16px;
+}
+
+#postList select {
+    height: 25px;
+}
+
+#dropdownSize {
+    display: flex;
+    flex-direction: column;
+}
+
+#dropdownSize select {
+    width: 115px;
+}
+
+#dropdownIndex {
+    display: flex;
+    flex-direction: column;
+}
+
+#dropdownIndex select {
+    width: 325px;
+}
+
+#postBox {
+    display: flex;
+    justify-content: center;
+}
+
+#postDisplay {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+
+    margin-top: 50px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 100%;
+    max-width: 1500px;
+}
+
+#postHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#postHeader header {
+    font-size: 35px;
+    font-weight: bold;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#postHeader #line {
+    max-width: 650px;
+}
+
+#postDisplay p {
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 18px;
+}
