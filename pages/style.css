@@ -84,8 +84,7 @@ body {
 
     position: fixed;
     justify-self: anchor-center;
-    align-self: anchor-center;
-    margin-top: -275px;
+    margin-top: -20px;
     z-index: 7;
 }
 
