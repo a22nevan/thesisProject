@@ -8,13 +8,10 @@
 </head>
 <script src="script.js"></script>
 <body>
-    <div class="pageHeader">
-        <div id="h_Anchors">
-            <a id="inactive">Home</a>
-            <a href="createPost.html">Create Post</a>
-            <a href="getPost.html">Get Post</a>
-        </div>
-    </div>
+    <?php 
+        $page = "homePage"; 
+        include "header.php";
+    ?>
     <div class="pageBody">
 
         <div class="infoText">
@@ -33,9 +30,13 @@
             <h1>Select Page:</h1>
             <div id="line"></div>
             <div id="SP_buttons">
-                <a href="createPost.html">Create Post</a>
-                <a href="getPost.html">Get Post</a>
+                <a href="createPost.php">Create Post</a>
+                <a href="getPost.php">Get Post</a>
             </div>
+        </div>
+
+        <div id="encryptionTest">
+
         </div>
     </div>
 

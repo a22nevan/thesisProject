@@ -8,13 +8,10 @@
 </head>
 <script src="script.js"></script>
 <body>
-    <div class="pageHeader">
-        <div id="h_Anchors">
-            <a href="homePage.html">Home</a>
-            <a id="inactive">Create Post</a>
-            <a href="getPost.html">Get Post</a>
-        </div>
-    </div>
+    <?php
+        $page = "createPost";
+        include "header.php";
+    ?>
 
     <div class="pageBody">
         <div class="infoText">

@@ -8,14 +8,11 @@
 </head>
 <script src="script.js"></script>
 <body>
-    <div class="pageHeader">
-        <div id="h_Anchors">
-            <a href="homePage.html">Home</a>
-            <a href="createPost.html">Create Post</a>
-            <a id="inactive">Get Post</a>
-        </div>
-    </div>
-
+    <?php 
+        $page = "getPost";
+        include "header.php";
+    ?>
+    
     <div class="pageBody">
         <div class="infoText">
             <!--SHOULD OPEN UP AN INFORMATION WINDOW ON TOP OF THE CURRENT PAGE, CSS + JS MAGIC TO MAKE IT WORK-->
