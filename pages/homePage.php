@@ -9,8 +9,10 @@
 <script src="script.js"></script>
 <body>
     <?php 
-        $page = "homePage"; 
+        $page = "homePage";
+        $method = "aes-256-cbc";
         include "header.php";
+        include "encryptDecrypt.php";
     ?>
     <div class="pageBody">
 
@@ -36,7 +38,47 @@
         </div>
 
         <div id="encryptionTest">
+            <div id="enInput">
+                <form method="post">
+                    <input type="text" name="enTextInput" id="enTextInput">
+                    <input type="submit" value="Submit" name="encryptText">
+                </form>
+            </div>
+            
+            <div id="enOutput">
+                <?php 
+                    $cipherText = "";
 
+                    if(isset($_POST['encryptText'])) {
+                        $text = $_POST['enTextInput'];
+                        $cipherText = encryptText($text, $method);
+
+                        echo "<p>" . $cipherText . "</p>";
+                    }
+                ?>
+            </div>
+
+            <div id="decInput">
+                <?php if ($cipherText): ?>
+                    <form method="post">
+                        <input type="hidden" name="ciphText" value="<?= $cipherText ?>">
+                        <input type="submit" name="decryptText">
+                    </form>
+                <?php endif; ?>
+            </div>
+
+            <div id="decOutput">
+                <?php 
+                    if(isset($_POST['decryptText']) && !empty($_POST['ciphText'])) {
+                        var_dump($_POST['ciphText']);
+                        $decrypted = decryptText($_POST['ciphText'], $method);
+
+                        var_dump($decrypted);
+
+                        echo "<p>" . $decrypted . "</p>";
+                    }
+                ?>
+            </div>
         </div>
     </div>
 
