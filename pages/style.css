@@ -190,7 +190,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
 
-    width: 500px;
+    width: 600px;
     margin-left: 8px;
     padding-left: 15px;
     padding-right: 18px;
@@ -204,6 +204,13 @@ body {
 
 #postList select {
     height: 25px;
+}
+
+#postList button {
+    height: 25px;
+    margin-left: -35px;
+    align-self: flex-end;
+    width: max-content;
 }
 
 #dropdownSize {

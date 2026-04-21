@@ -10,7 +10,6 @@
 <body>
     <?php
         $page = "createPost";
-        $method = "aes-256-cbc";
         include "header.php";
         include "encryptDecrypt.php";
         include "dbConnect.php";
@@ -65,7 +64,7 @@
                     <div>
                         <input type="text" name="title" id="postTitle" maxlength="50">
 
-                        <button id="postButton" name="submitPost">Submit Post</button>
+                        <button id="postButton" name="submitPost" disabled>Submit Post</button>
                     </div>
 
                     <!--Try to figure out a nice way to implement both the minimum and maximum character limit on the counter-->

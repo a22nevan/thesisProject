@@ -1,5 +1,9 @@
 <?php
 
+    //This works a bit weird, not recognized as a variable for the functions in THIS file, but works when included in other files
+    //i.e. I cant have this here and then remove the $method parameter from the functions, which I think is odd but oh well
+    $method = "aes-256-cbc";
+
     function getPrivateKey() {
         $file = fopen("privateKey.txt", "r") or die("File cannot be found!");
         $privateKey = fread($file, filesize("privateKey.txt"));
@@ -38,9 +42,8 @@
             
             default:
                 //Technically an error message, since the method should be set to AES-256-CBC by default.
-                echo "Please choose a valid block cipher. (How did you even manage to trigger this it's set to CBC by default???)";
+                echo "Please choose a valid block cipher. (How did you even manage to trigger this???)";
                 $combined = "";
-                //echo "<script type='text/javascript'>alert('$message');</script>";
         }
 
         //Returns the combined string
