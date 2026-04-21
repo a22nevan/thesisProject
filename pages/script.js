@@ -33,22 +33,22 @@ function updateFileSize(value){
     switch (fileSize) {
         case "s":
             maxCharacters = 300;
-            minCharacters = 200;
+            minCharacters = 150;
             break;
 
         case "m":
             maxCharacters = 1500;
-            minCharacters = 1000;
+            minCharacters = 950;
             break;
 
         case "l":
             maxCharacters = 7500;
-            minCharacters = 5000;
+            minCharacters = 4950;
             break;
         
         case "xl":
             maxCharacters = 22500;
-            minCharacters = 15000;
+            minCharacters = 14950;
             break;
     }
 
@@ -58,7 +58,8 @@ function updateFileSize(value){
     bodyLabel.textContent = bodyLabel.textContent.split("/")[0] + "/" + (maxCharacters - titleCharacters) + " Characters";
 }
 
-//Updates the character count for the labels in createPost.html
+//Updates the character count for the labels in createPost.php
+//This function and the one above could technically be combined into one since they handle the same things but eh
 function updateCharacterCount(textFieldID, labelID) {
 
     const textField = document.getElementById(textFieldID);
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const page = window.location.pathname.split("/").pop();
 
     //Onload stuff for createPost.html
-    if(page == "createPost.html"){
+    if(page == "createPost.php"){
         const radios = document.querySelectorAll('input[name="fS"]');
         const pTitle = document.getElementById("postTitle");
         const pBody = document.getElementById("postBody");

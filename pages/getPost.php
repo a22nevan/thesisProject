@@ -10,7 +10,10 @@
 <body>
     <?php 
         $page = "getPost";
+        $method = "aes-256-cbc";
         include "header.php";
+        include "encryptDecrypt.php";
+        include "dbConnect.php";
     ?>
     
     <div class="pageBody">
@@ -55,33 +58,37 @@
             </fieldset>
         </div>
 
-        <!--SHOULD NOT BE DISPLAYED UNTIL A POST HAS BEEN RETRIEVED, THIS IS JUST TEMP. PROTOTYPE TO VISUALISE HOW IT WILL LOOK-->
+        <?php 
+            $query = "SELECT * FROM `posts` WHERE `index` = 8";
+
+            $result = $conn -> query($query);
+
+            if ($result && $row = $result->fetch_assoc()) {
+                $fileSize = $row['fileSize'];
+                $title = $row['title'];
+                $encrypted = $row['content'];
+
+                $body = decryptText($encrypted, $method);
+            } else {
+                echo "oops something went wrong";
+            }
+
+            echo "File Size: " . $fileSize;
+            echo "<br>";
+            echo "Title: " . $title;
+            echo "<br>";
+            echo "Content: " . $body;
+        ?>
+
+        <!--SHOULD NOT BE DISPLAYED UNTIL A POST HAS BEEN RETRIEVED, THIS IS JUST A TEMP. PROTOTYPE TO VISUALIZE HOW IT WILL LOOK-->
         <div id="postBox">
             <div id="postDisplay">
                 <div id="postHeader">
-                    <header>POST TITLE</header>
+                    <header><?php echo $title; ?></header>
                     <div id="line"></div>
                 </div>
                 
-                <p>
-                    Ludicrous and insane content!
-                </p>
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare neque mauris, a pretium purus efficitur quis. Quisque laoreet nisi at metus porttitor efficitur. Quisque lobortis eros ex, eu auctor neque gravida posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae blandit eros. Donec nec massa a ipsum tempor consequat. Nunc a interdum urna. Fusce nec rhoncus tortor, lacinia ullamcorper mi. Sed purus risus, blandit id facilisis id, mattis nec orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras sagittis turpis ut elementum dignissim. Sed luctus, orci et tristique fermentum, massa augue posuere nisl, eget gravida justo libero eu massa. In ullamcorper nisi est, vel accumsan odio volutpat non. Cras maximus nisi neque, sit amet congue massa gravida sit amet. Suspendisse gravida ipsum odio, eget ultrices diam molestie et.
-                </p>
-
-                <p>
-                    Morbi mattis, ex a consectetur dictum, justo felis laoreet eros, eu commodo magna neque eget nunc. Aenean sagittis vulputate diam, non bibendum leo consectetur eget. Vestibulum suscipit est ac odio efficitur tempus. Vestibulum tempus sit amet enim eu dapibus. In tempor metus at odio accumsan, non hendrerit ex congue. Aenean non est vitae arcu pretium dignissim ac id mi. Nam tincidunt erat vel efficitur facilisis. Sed eu pulvinar ligula, in ornare ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-
-                <p>
-                    Nulla vitae tempor velit. Morbi vehicula, mauris sit amet tincidunt congue, ante nisl vulputate nunc, ut mattis nulla mi et dolor. Etiam molestie rhoncus lectus sit amet consequat. Cras eget quam suscipit, tempor dolor sed, scelerisque lacus. Curabitur condimentum metus non fringilla rutrum. Fusce condimentum lacus in aliquet euismod. Fusce sed sagittis tellus. Aliquam nulla nisi, imperdiet sed dolor non, congue feugiat erat. Aenean placerat turpis vitae tellus venenatis dignissim. Nunc dapibus, nunc et porta vehicula, mi dolor cursus lacus, et posuere nulla justo ac quam. Aenean aliquet, dolor non sagittis fermentum, diam odio porta lacus, ut malesuada libero est sit amet justo. Praesent viverra ex eget ipsum molestie laoreet.
-                </p>
-
-                <p>
-                    Integer finibus erat quis vulputate porttitor. Duis sollicitudin dapibus velit ac lacinia. Vivamus malesuada, enim sit amet viverra finibus, felis justo luctus eros, viverra consequat massa urna eu lacus. Phasellus vitae elit quis eros commodo sollicitudin. Etiam tempor, tellus in varius blandit, arcu ligula luctus lorem, nec sagittis urna sem non diam. Sed ullamcorper massa nec nibh tincidunt, eu bibendum enim pretium. In purus lectus, facilisis ut efficitur eu, suscipit non erat. Nulla id sollicitudin sem. Duis placerat laoreet ipsum, et ullamcorper sem hendrerit vitae. Ut ullamcorper pretium tellus a condimentum. Mauris feugiat nisi sed lectus fringilla dictum in et lacus. Mauris ac dapibus nunc.
-                </p>
+                <p><?php echo $body; ?></p>
             </div>
         </div>
     </div>

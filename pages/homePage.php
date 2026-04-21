@@ -70,11 +70,7 @@
             <div id="decOutput">
                 <?php 
                     if(isset($_POST['decryptText']) && !empty($_POST['ciphText'])) {
-                        var_dump($_POST['ciphText']);
                         $decrypted = decryptText($_POST['ciphText'], $method);
-
-                        var_dump($decrypted);
-
                         echo "<p>" . $decrypted . "</p>";
                     }
                 ?>

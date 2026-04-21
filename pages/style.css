@@ -158,6 +158,10 @@ body {
     font-weight: bold;
 }
 
+#fileSize label {
+    font-weight: normal !important;
+}
+
 #postTitle {
     width: 50%;
     max-width: 650px;
