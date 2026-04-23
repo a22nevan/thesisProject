@@ -2,7 +2,7 @@
 
     //This works a bit weird, not recognized as a variable for the functions in THIS file, but works when included in other files
     //i.e. I cant have this here and then remove the $method parameter from the functions, which I think is odd but oh well
-    $method = "aes-256-cbc";
+    $method = "aes-256-gcm";
 
     function getPrivateKey() {
         $file = fopen("privateKey.txt", "r") or die("File cannot be found!");

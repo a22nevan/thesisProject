@@ -120,6 +120,8 @@ function updateDropdown(value) {
                 getButton.disabled = true;
 
                 dropdownIndex.appendChild(option);
+
+                //window.dispatchEvent(new Event("dropdownReady"));
                 return;
             }
 
@@ -143,6 +145,7 @@ function updateDropdown(value) {
                 internalCount++;
             });
 
+            window.dispatchEvent(new Event("dropdownReady"));
         });
 
 }

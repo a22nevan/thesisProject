@@ -10,6 +10,7 @@
 <body>
     <?php
         $page = "createPost";
+        $index;
         include "header.php";
         include "encryptDecrypt.php";
         include "dbConnect.php";
@@ -79,21 +80,74 @@
             <?php 
                 //Checks if the submit button is pushed (checking if file size is set is probably unnecessary since its set to small by default)
                 if(isset($_POST['submitPost']) && isset($_POST['fS'])) {
+
+                    $startTime = microtime(true);
                     //Grabs the values from the input fields
                     $fileSize = $_POST['fS'];
                     $title = $_POST['title'];
                     $body = $_POST['body'];
                     //Encrypts the body
+                    $encryptionStart = microtime(true);
                     $encrypted = encryptText($body, $method);
+                    $encryptionEnd = microtime(true);
 
                     //Prepares an SQL-query (inserting the post into the database table)
                     $query = "INSERT INTO posts (fileSize, title, content) VALUES ('$fileSize', '$title', '$encrypted')";
 
                     //Tries the query against the database, exits and reloads if succeeded
-                    if ($conn -> query($query) === TRUE) {
+                    if ($conn -> query($query) === TRUE) {      
+
+                        $endTime = microtime(true);
+
+                        $encryptionTime = $encryptionEnd - $encryptionStart;
+                        $totalTime = $endTime - $startTime;
+                        $postLength = strlen($body);
+
+                        //Create a CSV file for the measurements
+                        $file = "create_" . $fileSize . "_" . substr($method, 8) ."_posts.csv";
+                        $indexFile = "counter.txt";
+                        $fileExists = file_exists($file);
+
+                        $fp = fopen($file, 'a');
+
+                        //Adds headers if file is new
+                        if (!$fileExists) {
+                            fputcsv($fp, [
+                                'Index',
+                                'Post Length',
+                                'Encryption Start',
+                                'Encryption End',
+                                'Encryption Delta',
+                                'Start Time',
+                                'End Time',
+                                'Process Delta'
+                            ]);
+                            $index = 1;
+                        } else {
+                            $index = (int)file_get_contents($indexFile);
+                            $index++;
+                        }
+
+                        //Adds the values for this iteration of the process
+                        fputcsv($fp, [
+                            $index,
+                            $postLength,
+                            $encryptionStart,
+                            $encryptionEnd,
+                            $encryptionTime,
+                            $startTime,
+                            $endTime,
+                            $totalTime
+                        ]);
+
+                        fclose($fp);
+
+                        file_put_contents($indexFile, $index);
+
                         //Reloads the page in a GET-state? A bit unsure exactly how this works couldn't be bothered to take in the information but it prevents resubmission of form on page refresh
                         header("Location: " . $_SERVER['PHP_SELF']);
                         exit();
+
                     } else {
                         echo "Oops something went wrong lol:" . $conn->error;
                     }
@@ -102,13 +156,13 @@
         </div>
         <div id="postTest">
             <?php 
-                if(isset($_POST['submitPost']) && isset($_POST['fS'])) {
+                /*if(isset($_POST['submitPost']) && isset($_POST['fS'])) {
                     echo $_POST['title'];
                     echo "<br>";
                     echo $_POST['body'];
                     echo "<br>";
                     echo $_POST['fS'];
-                }
+                }*/
             ?>
         </div>
     </div>

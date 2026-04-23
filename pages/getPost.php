@@ -58,6 +58,7 @@
 
         <?php 
             if (isset($_POST['getPost'])) {
+                $startTime = microtime(true);
                 $index = $_POST['index'];
                 $query = "SELECT * FROM `posts` WHERE `index` = $index";
 
@@ -67,7 +68,46 @@
                     $title = $row['title'];
                     $content = $row['content'];
 
+                    $decryptionStart = microtime(true);
                     $decryptedContent = decryptText($content, $method);
+                    $decryptionEnd = microtime(true);
+                    $endTime = microtime(true);
+                    $postLength = strlen($decryptedContent);
+
+                    $decryptionTime = $decryptionEnd - $decryptionStart;
+                    $totalTime = $endTime - $startTime;
+
+                    $file = "get_" . $row['fileSize'] . "_" . substr($method, 8) . "_posts.csv";
+                    $fileExists = file_exists($file);
+
+                    $fp = fopen($file, 'a');
+
+                    if(!$fileExists) {
+                        fputcsv($fp, [
+                            'Index',
+                            'Post Length',
+                            'Decryption Start',
+                            'Decryption End',
+                            'Decryption Delta',
+                            'Start Time',
+                            'End Time',
+                            'Process Delta'
+                        ]);
+                    }
+
+                    fputcsv($fp, [
+                        $index,
+                        $postLength,
+                        $decryptionStart,
+                        $decryptionEnd,
+                        $decryptionTime,
+                        $startTime,
+                        $endTime,
+                        $totalTime
+                    ]);
+
+                    fclose($fp);
+
                 } else {
                     echo "Oops something went wrong";
                 }
