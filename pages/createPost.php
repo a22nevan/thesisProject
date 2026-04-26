@@ -30,12 +30,6 @@
         </div>
 
         <div id="crP_Interface">
-            <!--NEED TO IMPLEMENT POSTING FUNCTIONALITY AS WELL AS ENCRYPTION-->
-            <!--PRIORITY 1 AFTER FINISHING PAGE + MAIN SCRIPTS IS SETTING UP THE DATABASE-->
-            <!-- NEED TO IMPLEMENT RADIO BUTTONS FOR SELECTING ENCRYPTION METHOD AS WELL -->
-
-            After taking a close look at how I defined the method, and with how the development has progressed the title probably
-            shouldn't be included in the encryption, and only content should be encrypted and measured.
 
             <div>
                 <form method="post">
@@ -104,7 +98,7 @@
                         $postLength = strlen($body);
 
                         //Create a CSV file for the measurements
-                        $file = "create_" . $fileSize . "_" . substr($method, 8) ."_posts.csv";
+                      /*  $file = "..\\CSV\\Pilot Study\\create_" . $fileSize . "_" . substr($method, 8) ."_posts.csv";
                         $indexFile = "counter.txt";
                         $fileExists = file_exists($file);
 
@@ -142,7 +136,7 @@
 
                         fclose($fp);
 
-                        file_put_contents($indexFile, $index);
+                        file_put_contents($indexFile, $index); */
 
                         //Reloads the page in a GET-state? A bit unsure exactly how this works couldn't be bothered to take in the information but it prevents resubmission of form on page refresh
                         header("Location: " . $_SERVER['PHP_SELF']);

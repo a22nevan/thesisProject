@@ -77,7 +77,7 @@
                     $decryptionTime = $decryptionEnd - $decryptionStart;
                     $totalTime = $endTime - $startTime;
 
-                    $file = "get_" . $row['fileSize'] . "_" . substr($method, 8) . "_posts.csv";
+                 /*   $file = "..\\CSV\\Pilot Study\\get_" . $row['fileSize'] . "_" . substr($method, 8) . "_posts.csv";
                     $fileExists = file_exists($file);
 
                     $fp = fopen($file, 'a');
@@ -106,7 +106,7 @@
                         $totalTime
                     ]);
 
-                    fclose($fp);
+                    fclose($fp); */
 
                 } else {
                     echo "Oops something went wrong";

@@ -14,7 +14,7 @@
     'use strict';
 
     const fileSize = "xl";
-    const postLimit = 100;
+    const postLimit = 500;
 
     //Math random with seeding
     function jsf32(a, b, c, d) {
@@ -410,9 +410,6 @@
                 let sentence = generateSentence(0.5, 0.3, 0.2, 0.8, 0, 0, 0, 0, 1, 1, 1);
                 let candidate = text ? text + " " + sentence : sentence;
 
-                if (candidate.length > max) { break; }
-
-                text = candidate;
                 sentenceCount++;
 
                 //After 10 sentences, there is a chance that line breaks will happen, essentially creating a new paragraph
@@ -421,10 +418,21 @@
                     //console.log("NewLine: " + newLineCheck);
 
                     if (newLineCheck <= 2) {
-                        text += "\n\n";
+                        candidate += "\n\n";
                         sentenceCount = 0; //Resets the sentence count if a paragraph break has been added
                     }
                 }
+
+                if (candidate.length > max) {
+                    if (text.length >= min) {
+                        break;
+                    } else {
+                        continue;
+                    }
+                }
+
+                text = candidate;
+
 
                 //While within the valid character range, generates a random number between 0 and 99. If the number is higher than the odds, the function stops making new sentences.
                 //This is mainly to add variety to the text length, trying to spread it out evenly across the range instead of only populating either the higher or lower bound
